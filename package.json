@@ -1,0 +1,24 @@
+{
+  "name": "play-with-json-placeholder",
+  "version": "1.0.0",
+  "description": "Practice async thunks by playing with JSON Placeholder API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ahmed Ali",
+  "license": "ISC",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.6",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "immer": "^9.0.15",
+    "node-fetch": "^3.2.10",
+    "nodemon": "^2.0.20",
+    "redux": "^4.2.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.4.1"
+  }
+}
