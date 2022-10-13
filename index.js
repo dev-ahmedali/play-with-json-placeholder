@@ -1,0 +1,10 @@
+const express = require('express');
+const path = require("path");
+const app = express()
+const cors = require("cors")
+const bodyParser = require("body-parser")
+global.appRoot = path.resolve(__dirname);
+const store = require("./rtk/app/store")
+const {fetchPost} = require("./rtk/features/post/postSlice")
+const rootPath = require("./controller/post")
+const resultJsonData = require("./controller/post");
