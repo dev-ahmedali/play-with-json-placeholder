@@ -44,6 +44,6 @@ const relatedPostSlice = createSlice({
   },
 });
 
-module.exports = relatedPostSlice.reducer
-module.exports.fetchRelatedPost = fetchRelatedPost
-module.exports.fetchRelatedPostAction = relatedPostSlice.actions
+module.exports = relatedPostSlice.reducer;
+module.exports.fetchRelatedPost = fetchRelatedPost;
+module.exports.fetchRelatedPostAction = relatedPostSlice.actions;

@@ -6,5 +6,27 @@ const bodyParser = require("body-parser")
 global.appRoot = path.resolve(__dirname);
 const store = require("./rtk/app/store")
 const {fetchPost} = require("./rtk/features/post/postSlice")
-const rootPath = require("./controller/post")
+const rootPath = require("./controller/root")
 const resultJsonData = require("./controller/post");
+
+app.set('view eingine', 'ejs');
+app.use(express.json())
+app.use(cors())
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
+app.use(cors({origin:true}))
+
+app.use(rootPath);
+app.use(resultJsonData)
+
+// subscribe to state changes
+store.subscribe(() => {
+    console.log(store.getState());
+})
+
+// dispatch action
+store.dispatch(fetchPost());
+
+app.listen(process.env.PORT || 4000, () => {
+    console.log("Node server started at http://localhost:" + (process.env.PORT || 4000));
+})

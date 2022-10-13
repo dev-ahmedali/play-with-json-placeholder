@@ -48,9 +48,93 @@
                     />
                 </div>
 
-                <div >
-
+                <div
+                    class="flex-1 bg-white p-6 flex flex-col justify-between"
+                >
+                    <div class="flex-1">
+                        <p class="text-sm font-medium text-indigo-400">
+                            <span
+                                class="inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium bg-indigo-100 text-indigo-800"
+                            >
+                                <%= data?.singleDataPost?.imageTitle || "Image Fake Title" %>
+                            </span>
+                        </p>
+                        <a href="#" class="block mt-1">
+                            <p
+                                class="text-xl font-semibold text-gray-900"
+                            >
+                                <%= data?.singleDataPost?.title || "Post Title" %>
+                            </p>
+                        </a>
+                    </div>
+                    <p class="my-2 w-[150px] mx-auto text-center text-md text-indigo-800 border border-indigo-500 bg-indigo-100 rounded-lg">Post Body</p>
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img
+                                class="h-10 w-10 rounded-full"
+                                src="https://avatars.githubusercontent.com/u/73503432?v=4"
+                                alt=""
+                            />
+                        </div>
+                        <div class="ml-3">
+                            <p
+                                class="text-sm font-medium text-gray-900 hover:underline"
+                            >
+                                <% if(data?.singleDataPost?.body){%>
+                                    <%= data?.singleDataPost?.body?.substring(0, 100) || "Post Body" %>
+                                <%}else{ %>
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore ipsam necessitatibus 
+                                    voluptatem, molestias pariatur natus minima. Commodi sequi veritatis, impedit dolorum molestias quam saepe vero earum inventore porro quae natus animi accusamus nobis quos alias. Aspernatur sit aliquam earum quos explicabo, quia consequuntur, soluta aliquid accusamus autem sequi molestiae illo voluptatibus optio. Ratione, sunt laborum. Ut magni rem quasi veritatis labore ipsam iste nemo quas illum numquam a facere molestiae id illo sint cupiditate, quis corporis commodi assumenda iure non! Nihil dolore reiciendis velit. Fugiat nostrum incidunt consequatur dolorem neque? Deleniti dolore dolorum omnis tempora cumque accusamus. Eius quam nulla blanditiis molestiae unde possimus quis aspernatur laudantium soluta aperiam excepturi laborum dolorum temporibus dolorem harum perspiciatis distinctio labore necessitatibus, voluptatem repudiandae dignissimos ducimus reprehenderit. Molestiae temporibus iste tempora vitae nemo! Molestiae velit voluptatibus rem non sed eligendi 
+                                    alias voluptate officia natus eum quidem hic ipsa earum, rerum laborum accusantium cum?
+                                <%} %>
+                            </p>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+                <!-- related posts  -->
+                <% data?.relatedDataPosts?.forEach(post => {%>
+                    <div
+                        class="flex flex-col rounded-lg drop-shadow-xl overflow-hidden"
+                    >
+                        <div
+                            class="flex-1 bg-white p-6 flex flex-col justify-between"
+                        >
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-indigo-600">
+                                    <span
+                                        class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800"
+                                    >
+                                        Related Post
+                                    </span>
+                                    <span
+                                        class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800"
+                                    >
+                                        Post Id: <%= post.id %>
+                                    </span>
+                                </p>
+                                <div class="block mt-1">
+                                    <p class="text-xl font-semibold text-gray-900">
+                                        <%= post.title || "Post Title" %>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr class="border-b-1 border-gray-100" />
+                            <div>
+                                <p
+                                    class="text-sm font-medium text-gray-900 hover:underline"
+                                >
+                                <%= post?.body?.substring(0, 100) || "Post Body" %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+                
+                
+            </div>
+        </div>
     </section>
 </body>
 </html>

@@ -1,28 +1,37 @@
 const { createAsyncThunk, createSlice } = require('@reduxjs/toolkit');
 const fetch = require('node-fetch');
+const { fetchRelatedPost } = require('../relatedPosts/relatedPostSlice');
 
 // initial State
 const initialState = {
   loading: false,
-  singlePost: {},
+  singleDataPost: {},
   error: '',
 };
 
 // create async thunk
-const fetchPost = createAsyncThunk('post/fetchPosts', async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts/10');
-  const posts = await response.json();
+const fetchPost = createAsyncThunk(
+  'post/fetchPosts',
+  async (_, { dispatch }) => {
+    const randomPostId = Math.floor(Math.random() * 100 || 1);
+    const response = await fetch(
+      'https://jsonplaceholder.typicode.com/posts/10' + randomPostId
+    );
+    const posts = await response.json();
+    dispatch(fetchRelatedPost(post.title))
 
-  return posts;
-});
+    return posts;
+  }
+);
 
 const postSlice = createSlice({
-  name: 'Post',
+  name: 'singlePost',
   initialState,
   extraReducers: (builder) => {
     builder
       .addCase(fetchPost.pending, (state, action) => {
-        (state.loading = true), (state.error = '');
+        state.loading = true, 
+        state.error = '';
       })
 
       .addCase(fetchPost.fulfilled, (state, action) => {
